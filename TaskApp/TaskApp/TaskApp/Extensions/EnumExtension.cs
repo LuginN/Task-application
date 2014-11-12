@@ -15,8 +15,7 @@ namespace TaskApp.Extensions
                 .GetType()
                 .GetField(value.ToString())
                 .GetCustomAttributes(typeof(DescriptionAttribute), false);
-            var atr = attributes.Length > 0 ? attributes[0].Description : value.ToString();
-            return atr;
+            return attributes.Select(x => x.Description).Concat(new [] {value.ToString()}).First();
         }
 
         public static IEnumerable<SelectListItem> ToSelectList(this Enum value)
