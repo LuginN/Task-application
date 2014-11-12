@@ -10,6 +10,9 @@ namespace TaskApp.Extensions
 {
     public static class HtmlHelperExtension
     {
+        // Pagination should be expressed noat as function returning string
+        // but as partial view with some helper functions
+        // all html should be in view, calculation in functions and model
         public static MvcHtmlString PageLinks<TModel>(this HtmlHelper helper,
             PaginatedListViewModel<TModel> model,
             Func<int, string> pageUrl)
