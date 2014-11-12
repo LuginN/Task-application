@@ -1,0 +1,62 @@
+﻿@model TaskApp.Models.Entities.Task
+
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Детали:</h2>
+
+<div>
+    <h4>Задача:</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkVolume)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkVolume)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BeginDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BeginDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PerformerId)
+        </dt>
+
+        <dd>
+            @Html.ActionLink(string.Format("{0} {1} {2}", Model.Performer.Surname, Model.Performer.Name, Model.Performer.Patronymic),
+         "Show", "Performer", new { @id = Model.PerformerId }, null)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Вернутся к списку задач", "Index")
+</p>

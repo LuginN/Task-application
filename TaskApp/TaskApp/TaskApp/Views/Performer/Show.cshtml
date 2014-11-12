@@ -1,0 +1,41 @@
+﻿@model TaskApp.Models.Entities.Performer
+
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Сведения:</h2>
+
+<div>
+    <h4>Исполнитель:</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Surname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Patronymic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patronymic)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Вернутся к списку исполнителей", "Index")
+</p>

@@ -1,0 +1,10 @@
+﻿@model TaskApp.Models.Entities.Task
+
+@{
+    ViewBag.Title = "Create";
+    ViewBag.Action = "Создать";
+}
+
+<h2>Создать:</h2>
+
+@Html.Partial("Task", Model)

@@ -1,0 +1,68 @@
+﻿@model TaskApp.Models.PaginatedListViewModel<TaskApp.Models.Entities.Task>
+@using TaskApp.Extensions
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Задания:</h2></br>
+<table class="table table-striped table-condensed">
+    <tr>
+        <th>
+            Задание:
+        </th>
+        <th>
+            Объём работ:
+        </th>
+        <th>
+            Дата начала:
+        </th>
+        <th>
+            Дата завершения:
+        </th>
+        <th>
+            Статус:
+        </th>
+        <th>
+            Исполнитель:
+        </th>
+        <th>
+            Действия:
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Items)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkVolume)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BeginDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+               @item.Status.ToDescription()
+            </td>
+            <td>
+                @Html.ActionLink(string.Format("{0} {1} {2}", item.Performer.Surname, item.Performer.Name, item.Performer.Patronymic),
+                "Show", "Performer", new { @id = item.PerformerId }, null)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.TaskId }) |
+                @Html.ActionLink("Показать", "Show", new { id = item.TaskId }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.TaskId })
+            </td>
+        </tr>
+    }
+
+</table></br>
+<h3>@Html.ActionLink("Добавить задание", "Create")</h3></br>
+<h4>@string.Format("{0} страница из {1}", Model.CurrentPage, (Model.TotalPages == 0 ? 1 : Model.TotalPages))</h4>
+@Html.PageLinks(Model, x => { return string.Format("Page{0}", x); })
